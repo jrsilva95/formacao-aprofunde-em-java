@@ -5,50 +5,24 @@ import java.time.LocalDate;
 
 public class Funcionario {
 
-	private String nome;
-	private String cpf;
-	private Cargo cargo;
-	private BigDecimal salario;
+	private DadosPessoais dadosPessoais;
 	private LocalDate dataUltimoReajuste;
 
 	public Funcionario(String nome, String cpf, Cargo cargo, BigDecimal salario) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.cargo = cargo;
-		this.salario = salario;
+		this.dadosPessoais = new DadosPessoais(nome, cpf, cargo, salario);
 	}
 
 	public void reajustarSalario(BigDecimal salario) {
-		this.salario = salario;
+		this.dadosPessoais.setSalario(salario);
 		this.dataUltimoReajuste = LocalDate.now();
 	}
 
-	public String getNome() {
-		return nome;
+	public DadosPessoais getDadosPessoais() {
+		return dadosPessoais;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public Cargo getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(Cargo cargo) {
-		this.cargo = cargo;
-	}
-
-	public BigDecimal getSalario() {
-		return salario;
+	public void setDadosPessoais(DadosPessoais dadosPessoais) {
+		this.dadosPessoais = dadosPessoais;
 	}
 
 	public void setSalario(BigDecimal salario) {
@@ -63,4 +37,7 @@ public class Funcionario {
 		this.dataUltimoReajuste = dataUltimoReajuste;
 	}
 
+	public void promover(Cargo novoCargo) {
+		this.dadosPessoais.setCargo(novoCargo);
+	}
 }
